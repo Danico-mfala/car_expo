@@ -1,8 +1,6 @@
 <?php 
 require '../../app/database/cnx.php' ;
 require '../../app/autoloader/autoload.php' ;
-loadFile('app', 'database', 'index') ;
-// loadFile('app', 'database', 'index') ;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,12 +12,12 @@ loadFile('app', 'database', 'index') ;
 <body>
   <h3>page admin</h3>
   <form action="" method="post" enctype="multipart/form-data">
-    <input type="text" name="modele" placeholder="modele">
+    <!-- <input type="text" name="modele" placeholder="modele"> -->
     <input type="file" name="logo">
     <input type="submit" name="envoyer" value="envoyer">
   </form>
   <?php
-
+// requete pour l'insertion des donnes test dans la base de donnes
   $dossierTempo = $_FILES['logo']['tmp_name'];
   $dossierSite = '../../public/image/db/logo/' . $_FILES['logo']['name'];
   $deplace = move_uploaded_file($dossierTempo, $dossierSite);
@@ -27,20 +25,21 @@ loadFile('app', 'database', 'index') ;
   // $extension = strrchr($_FILES['logo']['name'], '.');
   if(isset($_POST['envoyer'])) {
 
-    if(empty($_POST['modele']) || empty($_FILES['logo']['name'])) {
+    if(empty($_FILES['logo']['name'])) {
       echo "veuillez remplir tous les champs" ;
     } else {
 
       if($deplace) {
         
         $image = $_FILES['logo']['name'] ;
+        $id = 1 ;
 
-        $sql = "INSERT INTO logo (modele, logo)
-            VALUES (:modele, :logo)" ;
+        $sql = "INSERT INTO image (imageSec, marqueID)
+            VALUES (:imageSec, :marqueID)" ;
         $req = $cnx->prepare($sql) ;
         $retour = $req->execute(array(
-          ':modele' => $_POST['modele'],
-          ':logo' => $image
+          ':imageSec' => $image,
+          ':marqueID' => $id
           )) ;
 
           if($retour) {
