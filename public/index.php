@@ -56,7 +56,9 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
   <!-- header -->
 
   <!-- section logo links -->
-  <div></div>
+  <div>
+    
+  </div>
   <!-- section logo links -->
 
   <!-- section catalogue -->

@@ -7,7 +7,7 @@ function loadFile($folder = null, $scFolder = null, $file = null) {
   $file . '.php' ;
 
   if(file_exists($path)) {
-     require $path ;
+    require $path ;
   }else {
     echo 'fichier non trouver' ;
   }
