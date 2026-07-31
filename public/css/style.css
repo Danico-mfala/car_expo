@@ -6,6 +6,7 @@ body {
 }
 /***************** navigation ****************/
 header nav {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -72,6 +73,50 @@ nav ul a svg {
   background: #ff4c4c;
 }
 /***************** navigation ****************/
+/***************** home ****************/
+header .home_image {
+  width: 100%;
+  height: 95vh;
+}
+header .home_image .home_description {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home_image .home_description h2 {
+  margin: 0;
+  font-size: 3.5rem;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.home_image .home_description p {
+  font-size: 1.5rem;
+  width: 450px;
+  color: #fff;
+  margin: 10px 0;
+  text-wrap: wrap;
+}
+.home_image .home_description button {
+  background: #ff6b6b;
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.home_image .home_description button:hover {
+  background: #ff4c4c;
+}
+.home_image .home_description button a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+/***************** home  ****************/
 /***************** footer ****************/
 .footer {
   background-color: rgba(255, 255, 255, 0.1);
