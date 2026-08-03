@@ -47,11 +47,9 @@ nav ul {
 
 nav ul a {
   color: #fff;
-  text-decoration: none;
   padding: 8px 15px;
   border-radius: 20px;
   transition: 0.3s;
-  text-transform: capitalize;
 }
 nav ul a:hover {
   background: rgba(255, 255, 255, 0.2);
@@ -76,24 +74,23 @@ nav ul a svg {
 /***************** home ****************/
 header .home_image {
   width: 100%;
-  height: 95vh;
+  height: 50vh;
 }
 header .home_image .home_description {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
+  padding-bottom: 20px;
 }
 .home_image .home_description h2 {
   margin: 0;
-  font-size: 3.5rem;
   color: #fff;
   font-weight: 600;
   text-transform: uppercase;
 }
 .home_image .home_description p {
-  font-size: 1.5rem;
   width: 450px;
   color: #fff;
   margin: 10px 0;
@@ -114,9 +111,106 @@ header .home_image .home_description {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.2rem;
 }
 /***************** home  ****************/
+/***************** logo links  ****************/
+.logo_links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 15px;
+}
+.logo_links div {
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 100px;
+  height: 100px;
+  box-shadow: 0px 1px 7px 0px #ccc;
+  border-radius: 20px;
+}
+.logo_links div img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.logo_links div p {
+  margin: 0;
+  border-top: 1px dashed #ccc;
+}
+.logo_links div a {
+  color: #333;
+  color: #ccc;
+  font-weight: 700;
+}
+/***************** logo links  ****************/
+/***************** catalogue  ****************/
+.match {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0 15px;
+}
+.match input,
+.match select {
+  width: 400px;
+  padding: 10px 5px;
+  outline: none;
+  border-radius: 10px;
+  background: #aaa;
+  border: none;
+  transition: 0.2s;
+}
+.match input:focus,
+.match select:focus {
+  outline-color: orangered;
+  outline-width: 2px;
+  outline-style: solid;
+}
+::placeholder {
+  color: #333;
+}
+.catalogue {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0 15px;
+}
+.catalogue div {
+  margin: 10px;
+  width: 250px;
+  height: 250px;
+  box-shadow: 0px 1px 7px 0px #ccc;
+}
+.catalogue div img {
+  width: 100%;
+  height: 150px;
+}
+.catalogue div p {
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.catalogue div button {
+  text-align: center;
+  background: #ff6b6b;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  display: block;
+  margin: 0 auto;
+  transition: 0.2s;
+}
+.catalogue div button:hover {
+  background: #ff4c4c;
+}
+/***************** catalogue  ****************/
 /***************** footer ****************/
 .footer {
   background-color: rgba(255, 255, 255, 0.1);
@@ -143,20 +237,17 @@ header .home_image .home_description {
 }
 .footer-column h3,
 .logo-footer h2 {
-  font-size: 16px;
   margin-bottom: 10px;
   color: #fff;
   text-transform: uppercase;
 }
 .footer-column p {
-  font-size: 13px;
   color: #aaa;
 }
 .footer-column a {
   display: block;
   color: #aaa;
   text-decoration: none;
-  font-size: 13px;
   margin-bottom: 6px;
   transition: color 0.3s;
 }
@@ -191,7 +282,6 @@ hr {
   background: #ff4c4c;
 }
 .footer-bottom p {
-  font-size: 12px;
   color: #aaa;
 }
 /***************** footer ****************/
@@ -202,6 +292,27 @@ svg {
   font-weight: 500;
 }
 /***************** generale ****************/
-.catalogue {
-  padding: 50px 20px;
+h1 {
+  font-size: 24px;
+}
+h2,
+h3 {
+  font-size: 20px;
+}
+p,
+a {
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+* {
+  box-sizing: border-box;
+}
+hr {
+  border-top: none;
+  margin: 20px 0;
+}
+.teempo {
+  width: 150px;
+  aspect-ratio: 1;
 }

@@ -2,7 +2,7 @@
     <div class="footer-top">
       <div class="logo-footer">
         <h2>carexpo</h2>
-        <img src="./image/logo.avif" alt="logo">
+        <img src="./image/home/logo.avif" alt="logo">
       </div>
       <div class="footer-column">
         <h3>legale</h3>
