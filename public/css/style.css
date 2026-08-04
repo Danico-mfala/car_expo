@@ -118,6 +118,7 @@ header .home_image .home_description {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  gap: 15px;
   padding: 0 15px;
 }
 .logo_links div {
@@ -315,4 +316,72 @@ hr {
 .teempo {
   width: 150px;
   aspect-ratio: 1;
+}
+.contenaire {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.h1 {
+  text-align: center;
+  color: #ccc;
+  text-transform: capitalize;
+  font-size: 28px;
+}
+.contenaire h2 {
+  color: #ccc;
+  text-transform: capitalize;
+  font-size: 22px;
+  border-bottom: 1px dashed #333;
+  padding-bottom: 10px;
+}
+.contenaire div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.contenaire form {
+  box-shadow: 0px 1px 7px 0px #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background: #020628;
+}
+.contenaire form input[type="file"],
+.contenaire form input[type="text"],
+.contenaire form input[type="submit"],
+.contenaire form select {
+  width: 272px;
+  display: block;
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  background: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.contenaire form input[type="submit"] {
+  background: #ff6b6b;
+  transition: 0.2s;
+  color: #fff;
+  text-transform: capitalize;
+}
+.contenaire form label {
+  color: #fff;
+  font-weight: 600;
+}
+.contenaire form input[type="submit"]:hover {
+  background: #ff4c4c;
+}
+.error {
+  color: #ff4c4c;
+  font-weight: 600;
+  font-size: 22px;
+  text-transform: capitalize;
+}
+.success {
+  color: #00bfa6;
+  font-weight: 600;
+  font-size: 22px;
+  text-transform: capitalize;
 }
