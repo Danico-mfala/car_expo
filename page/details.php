@@ -12,8 +12,13 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
 </head>
 <body>
 <?php 
-  $sql = "SELECT imageSec FROM image
-          WHERE marqueID = :marqueID" ;
+  $sql = "SELECT img.imageSec, dt.km, dt.prix, dt.date, et.etat 
+          FROM image AS img
+          JOIN detail AS dt
+          ON img.marqueID = dt.marqueID 
+          JOIN etat AS et
+          ON dt.etatID = et.etatID
+          WHERE img.marqueID = :marqueID" ;
   $req = $cnx->prepare($sql) ;
   $req->execute(array(
     ":marqueID" => $_GET['marqueID']
@@ -22,14 +27,14 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
 ?>
 
   <img class="teempo" src="../public/image/db/car/<?= $data->imageSec ?>" alt="<?= 'image' ; ?>" >
+  <p><?= $data->km ?> kilometre</p>
+  <p><?= $data->prix ?>$</p>
+  <p><?= $data->date ?></p>
+  <p><?= $data->etat ?></p>
 
 <?php
   }  
 ?>
-  <pre>
-    <?php 
-    print_r($_GET) ;
-    ?>
-  </pre>
+
 </body>
 </html>

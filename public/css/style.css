@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -121,7 +124,7 @@ header .home_image .home_description {
   gap: 15px;
   padding: 0 15px;
 }
-.logo_links div {
+.logo_links a {
   display: inherit;
   align-items: center;
   justify-content: center;
@@ -133,16 +136,16 @@ header .home_image .home_description {
   box-shadow: 0px 1px 7px 0px #ccc;
   border-radius: 20px;
 }
-.logo_links div img {
+.logo_links a img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
-.logo_links div p {
+.logo_links a p {
   margin: 0;
   border-top: 1px dashed #ccc;
 }
-.logo_links div a {
+.logo_links a p {
   color: #333;
   color: #ccc;
   font-weight: 700;
@@ -181,6 +184,10 @@ header .home_image .home_description {
   flex-wrap: wrap;
   align-items: center;
   padding: 0 15px;
+}
+.catalogue .catalogue-nothing {
+  flex: 1;
+  text-align: center;
 }
 .catalogue div {
   margin: 10px;
