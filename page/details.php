@@ -9,32 +9,103 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>details vehicule</title>
   <link rel="stylesheet" href="../public/css/style.css">
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css"
+    />
 </head>
 <body>
 <?php 
-  $sql = "SELECT img.imageSec, dt.km, dt.prix, dt.date, et.etat 
-          FROM image AS img
-          JOIN detail AS dt
-          ON img.marqueID = dt.marqueID 
-          JOIN etat AS et
-          ON dt.etatID = et.etatID
-          WHERE img.marqueID = :marqueID" ;
-  $req = $cnx->prepare($sql) ;
-  $req->execute(array(
-    ":marqueID" => $_GET['marqueID']
-  )) ;
-  while($data = $req->fetch(PDO::FETCH_OBJ)) {
-?>
 
-  <img class="teempo" src="../public/image/db/car/<?= $data->imageSec ?>" alt="<?= 'image' ; ?>" >
-  <p><?= $data->km ?> kilometre</p>
-  <p><?= $data->prix ?>$</p>
-  <p><?= $data->date ?></p>
-  <p><?= $data->etat ?></p>
+      $marqueID = $_GET['marqueID'] ;
+
+      $sql_details = "SELECT dt.km, dt.prix, dt.date, dt.marqueID, et.etat
+              FROM detail AS dt
+              JOIN etat AS et ON dt.etatID = et.etatID
+              WHERE dt.marqueID = :marqueID" ;
+
+      $sql_images = "SELECT img.imageSec, img.marqueID FROM image AS img
+              WHERE img.marqueID = :marqueID" ;
+
+      $req_details = $cnx->prepare($sql_details) ;
+      $req_details->execute(array(
+        ":marqueID" => $marqueID
+      )) ;
+      $details = $req_details->fetch() ;
+
+      $req_images = $cnx->prepare($sql_images) ;
+      $req_images->execute(array(
+        ":marqueID" => $marqueID
+      )) ;
+      $images = $req_images->fetchAll() ;
+?>
+  <div>
+
+    <div class="detail-car">
 
 <?php
-  }  
+if($details):
 ?>
 
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+<?php
+foreach($images AS $img):
+?>
+  
+          <div class="swiper-slide">
+            <img src="../public/image/db/car/<?= $img['imageSec'] ; ?>" alt="<?= $img['imageSec'] ; ?>" >  
+          </div>
+      
+<?php
+endforeach ;
+?>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+
+      <div class="detail_desc">
+        <p><i class="fa-solid fa-gauge-simple-high"></i><?= $details['km'] ; ?>kilometre</p>
+        <p><i class="fa-solid fa-hand-holding-dollar"></i><?= $details['prix'] ; ?>$</p>
+        <p><i class="fa-solid fa-calendar-days"></i><?= $details['date'] ; ?></p>
+        <p><i class="fa-solid fa-gear"></i><?= $details['etat'] ; ?></p>
+        <button id="buy_sub">acheter</button>
+      </div>
+
+<?php
+endif ;
+?>
+
+    </div>
+
+    <div id="buy_form" class="content-form">
+      <form action="" method="post">
+        <input type="text" name="" id="">
+        <input type="text" name="" id="">
+        <textarea name="" id=""></textarea>
+
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+
+        <input type="submit" name="" value="">
+        <button id="btn_close">annuler</button>
+      </form>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/a6b68e8c8c.js" crossorigin="anonymous"></script>
+  <script>
+      var swiper = new Swiper('.mySwiper', {
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+  </script>
+  <script src="../public/js/script.js"></script>
 </body>
 </html>
