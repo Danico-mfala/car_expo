@@ -36,3 +36,4 @@
       <p>&#169; Copyright. All rights reserved BENDEV.</p>
     </div>
 </footer>
+<script src="https://kit.fontawesome.com/a6b68e8c8c.js" crossorigin="anonymous"></script>

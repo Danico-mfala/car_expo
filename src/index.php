@@ -174,7 +174,6 @@ require_once 'app/autoloader/autoload.php' ;
   <!-- section footer -->
 
   <script src="public/js/script.js"></script>
-  <script src="https://kit.fontawesome.com/a6b68e8c8c.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

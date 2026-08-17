@@ -282,6 +282,86 @@ header .home_image .home_description {
   z-index: 1100;
 }
 /***************** catalogue_details  ****************/
+/***************** contact  ****************/
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+  width: 75%;
+}
+.contact div {
+  flex: 1;
+}
+.contact div h2 {
+  font-size: 55px;
+  color: #fff;
+  letter-spacing: 4px;
+  margin: 0;
+}
+.contact div p {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+.contact form {
+  flex: 1;
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+.contact label {
+  display: block;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.contact input {
+  padding: 20px 5px;
+  outline: none;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+.contact textarea {
+  height: 150px;
+  width: 100%;
+  margin-top: 5px;
+  outline: none;
+  border: none;
+  background: rgba(12, 15, 41, 0.193);
+  border-bottom: 2px solid #fff;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.contact input[type="text"],
+.contact input[type="email"],
+.contact input[type="tel"] {
+  width: 100%;
+  border: none;
+  background: rgba(12, 15, 41, 0.193);
+  border-bottom: 2px solid #fff;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+::placeholder {
+  color: #fff;
+}
+.contact input[type="submit"] {
+  color: #f1f1f1;
+  background: #ff6b6b;
+  cursor: pointer;
+  width: 50%;
+  font-size: 20px;
+  border: none;
+}
+.contact input[type="submit"]:hover {
+  background: #ff4c4c;
+}
+/***************** contact  ****************/
 /***************** footer ****************/
 .footer {
   background-color: rgba(255, 255, 255, 0.1);
