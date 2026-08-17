@@ -1,6 +1,6 @@
 <?php
-require '../app/database/cnx.php' ;
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'autoloader' . DIRECTORY_SEPARATOR . 'autoload.php' ;
+require 'app/database/cnx.php' ;
+require_once 'app/autoloader/autoload.php' ;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,7 +9,7 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>page accuiel</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="public/css/style.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
     <!-- nav bar -->
     <nav>
       <div class="logo">
-        <img src="./image/home/logo.avif" alt="logo">
+        <img src="public/image/home/logo.avif" alt="logo">
         <span>carexpo</span>
       </div>
 
@@ -39,13 +39,13 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
     <!-- home -->
     <div class="home">
       <div class="home_image"
-        style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , center / cover no-repeat url('./image/home/LC.jpg') ;">
+        style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , center / cover no-repeat url('public/image/home/LC.jpg') ;">
 
         <div class="home_description">
           <div>
             <h2>bienvenue</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, blanditiis!</p>
-            <button><a href="../page/contact.php">contatez nous</a></button>
+            <button><a href="page/contact.php">contatez nous</a></button>
           </div>
         </div>
 
@@ -60,13 +60,13 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
   <hr>
   <!-- separeteur -->
   <!-- section logo links -->
-  <div class="logo_links"> 
+  <div class="logo_links">
 
-        <a href="index.php?hlogo=0#catalogue">
-          <i class=""></i>
-          <p>tous</p>
-        </a>
-<?php
+    <a href="index.php?hlogo=0#catalogue">
+      <i class=""></i>
+      <p>tous</p>
+    </a>
+    <?php
 // requete pour l'afficher des logos de marques dispo
     $sql = "SELECT modeleID, modele, logo FROM logo" ;
     $req = $cnx->prepare($sql) ;
@@ -75,12 +75,14 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
     while($data = $req->fetch(PDO::FETCH_OBJ)) {
 ?>
 
-        <a href="index.php?hlogo=<?= $data->modeleID ?>#catalogue">
-          <img src="./image/db/logo/<?= $data->logo ?>" alt="<?= $data->modele ?>">
-          <p><?= $data->modele ?></p>
-        </a>
+    <a href="index.php?hlogo=<?= $data->modeleID ?>#catalogue">
+      <img src="public/image/db/logo/<?= $data->logo ?>" alt="<?= $data->modele ?>">
+      <p>
+        <?= $data->modele ?>
+      </p>
+    </a>
 
-<?php
+    <?php
     }
 ?>
 
@@ -93,7 +95,8 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
   <div>
 
     <form class="match" id="macthForm" action="" method="get">
-      <input type="text" name="search" placeholder="trouver une voiture..." id="searchInput" value="<?= $_GET['search'] ?? '' ?>">
+      <input type="text" name="search" placeholder="trouver une voiture..." id="searchInput"
+        value="<?= $_GET['search'] ?? '' ?>">
       <select name="filter" id="filterSelect">
         <option value="" disable selected>filtre</option>
         <option value="1">nouveau</option>
@@ -104,7 +107,7 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
     <hr id="catalogue">
     <!-- separeteur -->
     <div class="catalogue">
-<?php
+      <?php
 // requete pour l'afficher de toutes les voiture dispo
     $hlogo = intval($_GET['hlogo'] ?? 0) ;
     $filter = intval($_GET['filter'] ?? 0) ;
@@ -138,37 +141,39 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
 ?>
 
       <div>
-        <img src="./image/db/car/<?= $data->image ?>" alt="<?= $data->marque ?>">
-        <p><?= $data->marque ?></p>
-        <button><a href="../page/details.php?marqueID=<?= $data->marqueID ?>">details</a></button>
+        <img src="public/image/db/car/<?= $data->image ?>" alt="<?= $data->marque ?>">
+        <p>
+          <?= $data->marque ?>
+        </p>
+        <button><a href="page/details.php?marqueID=<?= $data->marqueID ?>">details</a></button>
       </div>
 
-<?php
+      <?php
     }
   }else { 
-?> 
+?>
 
       <div class="catalogue-nothing">
         <p>aucun vehicule disponible</p>
       </div>
 
-<?php
+      <?php
 }
-?> 
+?>
 
-    </div>     
+    </div>
   </div>
   <!-- section catalogue -->
-    <!-- separeteur -->
-    <hr>
-    <!-- separeteur -->
+  <!-- separeteur -->
+  <hr>
+  <!-- separeteur -->
   <!-- section footer -->
   <?php
   loadFile('page','template','footer');
   ?>
   <!-- section footer -->
 
-  <script src="./js/script.js"></script>
+  <script src="public/js/script.js"></script>
   <script src="https://kit.fontawesome.com/a6b68e8c8c.js" crossorigin="anonymous"></script>
 </body>
 

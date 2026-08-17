@@ -1,7 +1,4 @@
 public/image/
-app/database/
 .vscode/
-docker-compose.yml
-Dockerfile
 .dockerignore
 db/
