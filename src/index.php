@@ -30,7 +30,7 @@ require_once 'app/autoloader/autoload.php' ;
         <li><a href="#"><i class="fas fa-info-circle"></i>apropos</a></li>
       </ul>
 
-      <a href="#" class="btn_admin">
+      <a href="./page/index.php" class="btn_admin">
         <i class="fa-regular fa-circle-user"></i>
       </a>
     </nav>
@@ -43,8 +43,8 @@ require_once 'app/autoloader/autoload.php' ;
 
         <div class="home_description">
           <div>
-            <h2>bienvenue</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, blanditiis!</p>
+            <h1>bienvenue</h1>
+            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, blanditiis!</h2>
             <button><a href="page/contact.php">contatez nous</a></button>
           </div>
         </div>
@@ -95,8 +95,11 @@ require_once 'app/autoloader/autoload.php' ;
   <div>
 
     <form class="match" id="macthForm" action="" method="get">
-      <input type="text" name="search" placeholder="trouver une voiture..." id="searchInput"
+      <label for="searchInput">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" name="search" placeholder="Recherche" id="searchInput"
         value="<?= $_GET['search'] ?? '' ?>">
+      </label>
       <select name="filter" id="filterSelect">
         <option value="" disable selected>filtre</option>
         <option value="1">nouveau</option>
@@ -140,12 +143,14 @@ require_once 'app/autoloader/autoload.php' ;
       while($data = $req->fetch(PDO::FETCH_OBJ)) {
 ?>
 
-      <div>
+      <div class="card-cat">
         <img src="public/image/db/car/<?= $data->image ?>" alt="<?= $data->marque ?>">
         <p>
           <?= $data->marque ?>
         </p>
-        <button><a href="page/details.php?marqueID=<?= $data->marqueID ?>">details</a></button>
+        <div>
+          <a href="page/details.php?marqueID=<?= $data->marqueID ?>">details</a>
+        </div>
       </div>
 
       <?php

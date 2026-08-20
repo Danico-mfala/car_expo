@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="footer-top">
       <div class="logo-footer">
-        <h2>carexpo</h2>
+        <h3>carexpo</h3>
         <img src="../../public/image/home/logo.avif" alt="logo">
       </div>
       <div class="footer-column">

@@ -13,7 +13,7 @@ require_once '../app/autoloader/autoload.php' ;
   <!-- formulaire de contact -->
   <div class="contact">
     <div>
-      <h2>Besoin d'information ?</h2>
+      <h1>Besoin d'information ?</h1>
       <p>contacter nous notre equipe repond rapidement !</p>
     </div>
     <form action="" method="post">

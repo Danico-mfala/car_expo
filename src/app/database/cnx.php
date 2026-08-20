@@ -1,5 +1,4 @@
 <?php
-echo 'welcome php' ;
 $password_file_path = file_get_contents(getenv('PASSWORD_FILE_PATH')) ;
 
 $db_pass = trim($password_file_path);

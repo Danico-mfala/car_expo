@@ -49,10 +49,8 @@ nav ul {
 }
 
 nav ul a {
-  color: #fff;
   padding: 8px 15px;
   border-radius: 20px;
-  transition: 0.3s;
 }
 nav ul a:hover {
   background: rgba(255, 255, 255, 0.2);
@@ -77,7 +75,7 @@ nav ul a svg {
 /***************** home ****************/
 header .home_image {
   width: 100%;
-  height: 50vh;
+  height: 70vh;
 }
 header .home_image .home_description {
   width: 100%;
@@ -87,19 +85,11 @@ header .home_image .home_description {
   align-items: end;
   padding-bottom: 20px;
 }
-.home_image .home_description h2 {
-  margin: 0;
-  color: #fff;
-  font-weight: 600;
-  text-transform: uppercase;
-}
 .home_image .home_description p {
   width: 450px;
-  color: #fff;
   margin: 10px 0;
-  text-wrap: wrap;
 }
-.home_image .home_description button {
+/* .home_image .home_description button {
   background: #ff6b6b;
   padding: 10px 25px;
   border-radius: 25px;
@@ -109,10 +99,9 @@ header .home_image .home_description {
 }
 .home_image .home_description button:hover {
   background: #ff4c4c;
-}
+} */
 .home_image .home_description button a {
   color: #fff;
-  text-decoration: none;
   font-weight: 600;
 }
 /***************** home  ****************/
@@ -141,15 +130,6 @@ header .home_image .home_description {
   height: 50px;
   border-radius: 50%;
 }
-.logo_links a p {
-  margin: 0;
-  border-top: 1px dashed #ccc;
-}
-.logo_links a p {
-  color: #333;
-  color: #ccc;
-  font-weight: 700;
-}
 /***************** logo links  ****************/
 /***************** catalogue  ****************/
 .match {
@@ -160,24 +140,32 @@ header .home_image .home_description {
   gap: 10px;
   padding: 0 15px;
 }
-.match input,
-.match select {
-  width: 400px;
-  padding: 10px 5px;
+.match label {
+  width: 70%;
+  display: flex;
+  gap: 10px;
+  /* padding-left: 10px; */
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid #7f8996;
+  background: rgba(12, 15, 41, 0.193);
+  box-sizing: border-box;
+  height: 44px;
+}
+.match label svg {
+  border-right: 1px solid #7f8996;
+  padding: 0 10px;
+  height: 100%;
+}
+.match label input {
+  height: 100%;
+  padding: 0;
+  background: transparent;
   outline: none;
-  border-radius: 10px;
-  background: #aaa;
-  border: none;
-  transition: 0.2s;
+  border-radius: 0;
 }
-.match input:focus,
-.match select:focus {
-  outline-color: orangered;
-  outline-width: 2px;
-  outline-style: solid;
-}
-::placeholder {
-  color: #333;
+.match select {
+  width: 250px;
 }
 .catalogue {
   display: flex;
@@ -189,35 +177,28 @@ header .home_image .home_description {
   flex: 1;
   text-align: center;
 }
-.catalogue div {
+.catalogue .card-cat {
   margin: 10px;
   width: 250px;
   height: 250px;
   box-shadow: 0px 1px 7px 0px #ccc;
+  padding: 0;
 }
-.catalogue div img {
+.catalogue .card-cat img {
   width: 100%;
-  height: 150px;
+  height: 152px;
 }
-.catalogue div p {
+.catalogue .card-cat p {
   text-align: center;
-  color: #fff;
   font-weight: 700;
-  letter-spacing: 1px;
 }
-.catalogue div button {
+.catalogue .card-cat div {
   text-align: center;
-  background: #ff6b6b;
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: none;
-  display: block;
-  margin: 0 auto;
-  transition: 0.2s;
+  padding: 10px 0;
+  background: #1e1e2f;
+  border-top: 1px solid #7f8996;
 }
-.catalogue div button:hover {
-  background: #ff4c4c;
-}
+
 /***************** catalogue  ****************/
 /***************** catalogue_details  ****************/
 .detail-car {
@@ -261,7 +242,6 @@ header .home_image .home_description {
 }
 .detail_desc p svg {
   margin-right: 5px;
-  font-size: 20px;
 }
 .content-form {
   display: none;
@@ -294,140 +274,63 @@ header .home_image .home_description {
 .contact div {
   flex: 1;
 }
-.contact div h2 {
-  font-size: 55px;
-  color: #fff;
-  letter-spacing: 4px;
-  margin: 0;
-}
-.contact div p {
-  font-size: 22px;
-  color: #fff;
-  font-weight: 300;
-  letter-spacing: 3px;
-}
 .contact form {
   flex: 1;
-  /* display: flex; */
-  /* flex-direction: column; */
-}
-.contact label {
-  display: block;
-  font-size: 18px;
-  color: #fff;
-  font-weight: 500;
-  text-transform: capitalize;
-}
-.contact input {
-  padding: 20px 5px;
-  outline: none;
-  margin: 5px 0;
-  transition: 0.3s;
-}
-.contact textarea {
-  height: 150px;
-  width: 100%;
-  margin-top: 5px;
-  outline: none;
-  border: none;
-  background: rgba(12, 15, 41, 0.193);
-  border-bottom: 2px solid #fff;
-  font-size: 20px;
-  color: #fff;
-  letter-spacing: 1px;
-}
-.contact input[type="text"],
-.contact input[type="email"],
-.contact input[type="tel"] {
-  width: 100%;
-  border: none;
-  background: rgba(12, 15, 41, 0.193);
-  border-bottom: 2px solid #fff;
-  font-size: 20px;
-  color: #fff;
-  letter-spacing: 1px;
-}
-::placeholder {
-  color: #fff;
-}
-.contact input[type="submit"] {
-  color: #f1f1f1;
-  background: #ff6b6b;
-  cursor: pointer;
-  width: 50%;
-  font-size: 20px;
-  border: none;
-}
-.contact input[type="submit"]:hover {
-  background: #ff4c4c;
 }
 /***************** contact  ****************/
+/***************** admin  ****************/
+.admin-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+.admin-form form {
+  border-radius: 6px;
+  border: 1px solid #7f8996;
+  box-shadow: 0px 1px 7px 0px #ccc;
+  padding: 20px;
+  width: 420px;
+}
+.admin-form input[type="submit"] {
+  margin-top: 5px;
+}
+/***************** admin  ****************/
 /***************** footer ****************/
 .footer {
   background-color: rgba(255, 255, 255, 0.1);
   padding: 50px 80px;
-  text-align: center;
 }
 .footer-top {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   text-align: left;
-  margin-bottom: 30px;
 }
 .logo-footer img {
   width: 50px;
   height: 50px;
   border-radius: 20px;
 }
-.footer-column,
-.logo-footer {
-  flex: 1;
-  /* min-width: 150px; */
-  margin: 10px;
-}
-.footer-column h3,
-.logo-footer h2 {
-  margin-bottom: 10px;
-  color: #fff;
-  text-transform: uppercase;
-}
-.footer-column p {
-  color: #aaa;
-}
 .footer-column a {
   display: block;
-  color: #aaa;
-  text-decoration: none;
   margin-bottom: 6px;
-  transition: color 0.3s;
-}
-.footer-column a:hover {
-  color: #fff;
-}
-hr {
-  border: none;
-  border-top: 1px solid #333;
-  margin: 30px 0;
-}
-.footer-bottom {
-  text-align: center;
 }
 .social-icons {
-  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
 }
 .social-icons a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  color: #fff;
   background: #ff6b6b;
   border-radius: 50%;
   width: 35px;
   height: 35px;
   margin: 0 5px;
-  transition: background 0.3s;
 }
 .social-icons a:hover {
   background: #ff4c4c;
@@ -437,27 +340,123 @@ hr {
 }
 /***************** footer ****************/
 /***************** generale ****************/
+a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: 0.3s;
+  text-transform: capitalize;
+}
+a:hover {
+  color: #ff4c4c;
+}
+select {
+  padding: 14px 10px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: rgba(12, 15, 41, 0.193);
+  border: 1px solid #7f8996;
+}
+select:focus {
+  outline: 3px solid #ecf9ff;
+}
+input[type="submit"],
+button {
+  background: #ff6b6b;
+  cursor: pointer;
+  width: 50%;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  border: none;
+  transition: 0.3s;
+}
+input[type="submit"]:hover,
+button:hover {
+  background: #ff4c4c;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="file"] {
+  width: 100%;
+  border: 1px solid #7f8996;
+  box-sizing: border-box;
+  transition: 0.3s;
+  background: rgba(12, 15, 41, 0.193);
+  font-size: 1.1rem;
+  padding: 14px 10px;
+  border-radius: 6px;
+}
+::placeholder {
+  color: #7f8996;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus,
+textarea:focus {
+  outline: 3px solid #ecf9ff;
+}
+textarea {
+  height: 150px;
+  width: 100%;
+  outline: none;
+  border: 1px solid #7f8996;
+  background: rgba(12, 15, 41, 0.193);
+  font-size: 1.1rem;
+  border-radius: 6px;
+  transition: 0.3s;
+  box-sizing: border-box;
+  padding: 10px;
+}
+label {
+  display: block;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-top: 7px;
+  margin-bottom: 2px;
+}
 svg {
+  color: #7f8996;
   box-sizing: border-box;
   font-size: 20px;
   font-weight: 500;
 }
-/***************** generale ****************/
-h1 {
-  font-size: 24px;
+hr {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 30px 0;
 }
-h2,
-h3 {
-  font-size: 20px;
-}
+h3,
+a,
 p,
-a {
-  font-size: 16px;
-  text-decoration: none;
+textarea,
+input,
+button {
+  margin: 0;
+  letter-spacing: 1px;
+  color: #f1f1f1;
+}
+h1 {
+  font-size: 55px;
+  letter-spacing: 4px;
+  color: #f1f1f1;
+  font-weight: 600;
   text-transform: capitalize;
 }
-* {
-  box-sizing: border-box;
+h2 {
+  font-size: 22px;
+  color: #f1f1f1;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+h3 {
+  font-size: 20px;
+  text-transform: capitalize;
 }
 hr {
   border-top: none;
@@ -475,26 +474,23 @@ hr {
   font-size: 22px;
   text-transform: capitalize;
 }
-/******************************/
+/***************** generale ****************/
 .contenaire {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-start;
 }
 .h1 {
   text-align: center;
-  color: #ccc;
-  text-transform: capitalize;
-  font-size: 28px;
 }
 .contenaire h2 {
-  color: #ccc;
-  text-transform: capitalize;
-  font-size: 22px;
   border-bottom: 1px dashed #333;
   padding-bottom: 10px;
 }
 .contenaire div {
+  width: 420px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -503,20 +499,20 @@ hr {
   box-shadow: 0px 1px 7px 0px #ccc;
   padding: 20px;
   border-radius: 10px;
-  background: #020628;
+  background: rgba(12, 15, 41, 0.193);
 }
 .contenaire form input[type="file"],
 .contenaire form input[type="text"],
 .contenaire form input[type="submit"],
 .contenaire form select {
-  width: 272px;
+  /* width: 272px;
   display: block;
   padding: 5px 10px;
   border: none;
   outline: none;
   background: #ccc;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 5px; */
   margin: 10px 0;
 }
 .contenaire form input[type="submit"] {
