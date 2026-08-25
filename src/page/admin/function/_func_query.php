@@ -24,7 +24,7 @@ function insert_logo() {
     }
 }
 
-function  insert_vehicule () {
+function  insert_vehicule() {
   $dossierTempo = $_FILES['vehicule']['tmp_name'] ;
     $dossierSite = '../../public/image/db/car/' . $_FILES['vehicule']['name'] ;
     
@@ -49,7 +49,7 @@ function  insert_vehicule () {
     }
 }
 
-function insert_img_sec () {
+function insert_img_sec() {
   $dossierTempo = $_FILES['imageSec']['tmp_name'] ;
     $dossierSite = '../../public/image/db/car/' . $_FILES['imageSec']['name'] ;
     

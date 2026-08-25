@@ -57,15 +57,15 @@ if(isset($_POST['connexion'])) {
       <form action="" method="post">
         <?= $message ; ?>
         <label for="pseudo">pseudo</label>
-        <input type="text" name="pseudo" placeholder="admin" id="pseudo">
+        <input type="text" name="pseudo" placeholder="admin" id="pseudo" value="<?php if(isset($_POST['pseudo'])) { echo $_POST['pseudo'] ;} ?>">
 
         <label for="pass">mot de passe</label>
-        <input type="text" name="pass" placeholder="mot de passe" id="pass">
+        <input type="password" name="pass" placeholder="mot de passe" id="pass" value="<?php if(isset($_POST['pass'])) { echo $_POST['pass'] ;} ?>" >
 
         <input type="submit" name="connexion" value="valider">
 
         <label for="memoire">se souvernir de moi</label>
-        <input type="checkbox" name="memoire" id="memoire">
+        <input type="checkbox" <?php if( isset($_COOKIE['memoire']) ) { echo 'checked' ;} ; ?> name="memoire" id="memoire">
       </form>
     </div>
 </body>
