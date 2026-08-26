@@ -287,12 +287,16 @@ header .home_image .home_description {
   box-shadow: 0px 1px 7px 0px #ccc;
   padding: 20px;
 }
+.admin-content h2 {
+  text-align: center;
+}
 .admin-content form div select {
   width: 48%;
   margin: 0;
   box-sizing: border-box;
 }
 .admin-content input[type="number"],
+.admin-content input[type="text"],
 .admin-content select {
   border: 1px solid #7f8996;
   outline: none;
@@ -398,12 +402,10 @@ header .home_image .home_description {
 article {
   width: 100%;
   min-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 article section {
-  width: 50%;
+  width: 80%;
+  margin: 20px auto;
 }
 .h1 {
   text-align: center;
@@ -414,10 +416,10 @@ article section h2 {
   margin: 0;
   padding: 0 0 10px 0;
 }
-article section div {
+/* article section div {
   width: 420px;
   margin: 10px auto;
-}
+} */
 article section form {
   box-shadow: 0px 1px 7px 0px #ccc;
   padding: 20px;

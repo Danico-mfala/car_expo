@@ -26,7 +26,7 @@ require_once 'app/autoloader/autoload.php' ;
       <ul>
         <li><a href="#"><i class="fas fa-home"></i>accueil</a></li>
         <li><a href="#"><i class="fa-solid fa-car"></i>catalogue</a></li>
-        <li><a href="#"><i class="fas fa-briefcase"></i>contact</a></li>
+        <li><a href="page/contact.php"><i class="fas fa-briefcase"></i>contact</a></li>
         <li><a href="#"><i class="fas fa-info-circle"></i>apropos</a></li>
       </ul>
 

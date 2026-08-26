@@ -18,6 +18,8 @@ if( isset($_POST['sendNewCar']) ) {
 // insertion du vehicule fin
 ?>
 
+<section>
+
 <div class="admin-content">
   <h2>remplir le formulaire pour ajouter un nouveau vehicule</h2>
   <form action="" method="post" enctype="multipart/form-data">
@@ -93,11 +95,15 @@ while($data = $req->fetch(PDO::FETCH_OBJ)) {
 </div>
 
 <div class="admin-content">
-  <h2></h2>
+  <h2>remplir le formulaire pour inserer une marque</h2>
   <form action="" method="post">
-    <label for="logo">associer un logo &darr;&darr;&darr; </label>
-    <input type="file" name="logo" id="logo">
+    <div class="custom-file-upload">
+      <i class="fa-solid fa-circle-plus"></i>
+      <input type="file" name="logo" id="logo" class="file-upload">
+      <label for="logo">logo de la marque</label>
+    </div>
     <input type="text" name="modele" placeholder="entre un modele...">
     <input type="submit" name="envlogo" value="envoyer">
   </form>
 </div>
+</section>

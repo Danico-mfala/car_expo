@@ -17,6 +17,6 @@ function switchPage ($quey_get) {
       require ('./template/deconnexion.php') ;
     break ;
       default :
-        require ('./template/exemple.php') ;
+        require ('./template/_add_car.php') ;
   }
 }
