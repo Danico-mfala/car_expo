@@ -30,5 +30,6 @@ if( isset($_SESSION['admin']) && isset($_SESSION['pass']) ){
   </article>
   
   <script src="https://kit.fontawesome.com/a6b68e8c8c.js" crossorigin="anonymous"></script>
+  <script src="../../public/js/admin-script.js"></script>
 </body>
 </html>

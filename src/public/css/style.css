@@ -279,6 +279,62 @@ header .home_image .home_description {
 }
 /***************** contact  ****************/
 /***************** admin  ****************/
+.admin-content form {
+  width: 50%;
+  margin: 20px auto;
+  border-radius: 6px;
+  border: 1px solid #7f8996;
+  box-shadow: 0px 1px 7px 0px #ccc;
+  padding: 20px;
+}
+.admin-content form div select {
+  width: 48%;
+  margin: 0;
+  box-sizing: border-box;
+}
+.admin-content input[type="number"],
+.admin-content select {
+  border: 1px solid #7f8996;
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: rgba(12, 15, 41, 0.193);
+  margin-bottom: 8px;
+  width: 100%;
+}
+.custom-file-upload {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  position: relative;
+  gap: 10px;
+  margin-top: 10px;
+  border: 1px solid #7f8996;
+  padding: 2px 0;
+}
+.custom-file-upload input[type="file"] {
+  padding: 0;
+  border: none;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 15px;
+  opacity: 0;
+}
+.custom-file-upload label {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  text-transform: lowercase;
+}
+.custom-file-upload svg {
+  font-size: 40px;
+  transition: 0.2s;
+}
+/*------*/
 .admin-form {
   display: flex;
   align-items: center;
@@ -488,6 +544,7 @@ input[type="email"]:focus,
 input[type="tel"]:focus,
 input[type="password"]:focus,
 input[type="file"]:focus,
+input[type="number"]:focus,
 textarea:focus {
   outline: 3px solid #ecf9ff;
 }
@@ -522,6 +579,9 @@ hr {
   border: none;
   border-top: 1px solid #333;
   margin: 30px 0;
+}
+br {
+  padding: 5px 0;
 }
 h3,
 a,

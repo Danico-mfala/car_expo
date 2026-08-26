@@ -6,11 +6,19 @@
     </div>
     <li>
         <i class="fa-solid fa-square-plus"></i>
-        <a href="/page/admin?page=addCar">ajouter</a>
+        <a href="/page/admin?page=add">ajouter</a>
+    </li>
+    <li>
+      <i class="fa-solid fa-trash"></i>
+      <a href="/page/admin?page=delete">supprimer</a>
+    </li>
+    <li>
+      <i class="fa-regular fa-pen-to-square"></i>
+      <a href="/page/admin?page=edit">modifier</a>
     </li>
     <li>
       <i class="fa-solid fa-car"></i>
-      <a href="/page/admin?page=catalogue">catalogue</a>
+      <a href="/page/admin?page=all">catalogue</a>
     </li>
     <li>
         <i class="fa-solid fa-right-from-bracket"></i>

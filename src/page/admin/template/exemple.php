@@ -137,4 +137,58 @@ if( !empty($_FILES['imageSec']['name']) && !empty($_POST['marqueID']) ) {
       </div>
     <!-- insertion image secondaire -->
     </section>
+
+
+<!-- <div class="admin-content">
+  <h2>remplir le formulaire pour ajouter un nouveau vehicule</h2>
+  <form action="" method="post" enctype="multipart/form-data">
+    <input type="number" name="km" placeholder="kilometrage">
+    <input type="number" name="prix" placeholder="prix">
+    <input type="number" name="annee" placeholder="edition">
+    <div>
+      <select name="etat" id="">
+        <option value="0">etat vehicule</option>
+        <option value="1">nouveau</option>
+        <option value="2">occasion</option>
+      </select>
+      <select name="modele" id="">
+        <option value="0">modele</option>
+        <option value="">bmw</option>
+        <option value="">mazda</option>
+      </select>
+    </div>
+
+      <div class="custom-file-upload">
+        <i class="fa-solid fa-circle-plus"></i>
+        <input type="file" name="image" id="image" class="file-upload">
+        <label for="image">vehicule</label>
+      </div>
+      <div class="custom-file-upload">
+        <i class="fa-solid fa-circle-plus"></i>
+        <input type="file" name="image" id="image" class="file-upload">
+        <label for="image">arriere</label>
+      </div>
+      <div class="custom-file-upload">
+        <i class="fa-solid fa-circle-plus"></i>
+        <input type="file" name="image" id="image" class="file-upload">
+        <label for="image">avant</label>
+      </div>
+      <div class="custom-file-upload">
+        <i class="fa-solid fa-circle-plus"></i>
+        <input type="file" name="image" id="image" class="file-upload">
+        <label for="image">interieur</label>
+      </div>
+      <div class="custom-file-upload">
+        <i class="fa-solid fa-circle-plus"></i>
+        <input type="file" name="image" id="image" class="file-upload">
+        <label for="image">tableau de bord</label>
+      </div>
+
+      <input type="submit" name="envimg" value="valider">
+  </form>
+</div> -->
+
+
   <script src="https://kit.fontawesome.com/a6b68e8c8c.js" crossorigin="anonymous"></script>
+
+  

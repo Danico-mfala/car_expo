@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterSelect = document.getElementById("filterSelect");
   const searchInput = document.getElementById("searchInput");
   const macthForm = document.getElementById("macthForm");
+
   let timer;
 
   searchInput.addEventListener("input", function () {
