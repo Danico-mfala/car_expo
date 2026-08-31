@@ -1,21 +1,37 @@
 <?php
-require ('../admin/function/_func_query.php') ;
 require ('../../app/database/cnx.php') ;
+require_once ('../admin/function/_func_query.php') ;
 
 // insertion du vehicule debut
 if( isset($_POST['sendNewCar']) ) {
   if( !empty($_POST['km']) && !empty($_POST['prix']) && !empty($_POST['edition']) && !empty($_POST['etat']) && !empty($_POST['modele']) ) { // tous le champs rempli
       if( !empty($_FILES['vehicule']['name']) && !empty($_FILES['avant']['name']) && !empty($_FILES['arriere']['name']) && !empty($_FILES['interieur']['name']) && !empty($_FILES['tableau']['name']) ) { /* toutes les image inserer */
         // fonctions insertion du vehicules 
-        $message = '<p class="success">donnee envoyer avec succes</p>' ;
+        $message1 = '<p class="success">donnee envoyer avec succes</p>' ;
       } else {
-        $message = '<p class="error">inserer toutes les images requis</p>' ;
+        $message1 = '<p class="error">inserer toutes les images requis</p>' ;
       }
   } else {
-    $message = '<p class="error">remplissez tous les champs</p>' ;
+    $message1 = '<p class="error">remplissez tous les champs</p>' ;
   }
 }
 // insertion du vehicule fin
+
+// insertion  modele debut
+if( isset($_POST['sendNewModele']) ) {
+  if( !empty($_POST['modele']) ) {
+    if( !empty($_FILES['logo']['name']) ) {
+        // fonctions insertion du logo
+        $ok = "insert" ;
+        insert_modele() ;
+    } else {
+      $message2 = '<p class="error">ajouter image</p>' ;
+    }
+  } else {
+    $message2 = '<p class="error">remplissez tous les champs</p>' ;
+  }
+}
+// insertion  modele fin
 ?>
 
 <section>
@@ -23,7 +39,7 @@ if( isset($_POST['sendNewCar']) ) {
 <div class="admin-content">
   <h2>remplir le formulaire pour ajouter un nouveau vehicule</h2>
   <form action="" method="post" enctype="multipart/form-data">
-    <?= isset($message) ? $message : "" ; ?>
+    <?= isset($message1) ? $message1 : "" ; ?>
     <!-- donnee de la table details debut -->
     <input type="number" name="km" placeholder="kilometrage">
     <input type="number" name="prix" placeholder="prix">
@@ -94,16 +110,23 @@ while($data = $req->fetch(PDO::FETCH_OBJ)) {
   </form>
 </div>
 
+<pre>
+  <?= isset($ok) ? $ok : "rien" ; ?>
+</pre>
+
 <div class="admin-content">
   <h2>remplir le formulaire pour inserer une marque</h2>
-  <form action="" method="post">
+  <form action="" method="post" enctype="multipart/form-data">
+    <?= isset($message2) ? $message2 : "" ; ?>
     <div class="custom-file-upload">
+      <!-- donnee de la table logo (modele) debut -->
       <i class="fa-solid fa-circle-plus"></i>
       <input type="file" name="logo" id="logo" class="file-upload">
       <label for="logo">logo de la marque</label>
     </div>
     <input type="text" name="modele" placeholder="entre un modele...">
-    <input type="submit" name="envlogo" value="envoyer">
+      <!-- donnee de la table logo (modele) fin -->
+    <input type="submit" name="sendNewModele" value="envoyer">
   </form>
 </div>
 </section>

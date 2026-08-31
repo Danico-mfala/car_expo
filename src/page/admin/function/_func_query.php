@@ -1,8 +1,10 @@
 <?php
+require ('../../app/database/cnx.php') ;
 
-function insert_logo() {
+// function insertion  modele debut 
+function insert_modele() {
   $dossierTempo = $_FILES['logo']['tmp_name'] ;
-    $dossierSite = '../../public/image/db/logo/' . $_FILES['logo']['name'] ;
+    $dossierSite = '../../../public/image/db/logo/' . $_FILES['logo']['name'] ;
     
     $deplacer = move_uploaded_file($dossierTempo, $dossierSite) ; 
     if($deplacer) {
@@ -17,13 +19,14 @@ function insert_logo() {
       $retour = $req->rowCount() ;
 
         if($retour > 0) {
-          $message1 = '<p class="success">modele inserer</p>' ;
+          return $message2 = '<p class="success">modele inserer</p>' ;
         } else {
-          $message1 = '<p class="error">insertion echouee</p>' ;
+          return $message2 = '<p class="error">insertion echouee</p>' ;
         }
     }
 }
-
+// function insertion  modele fin
+/*
 function  insert_vehicule() {
   $dossierTempo = $_FILES['vehicule']['tmp_name'] ;
     $dossierSite = '../../public/image/db/car/' . $_FILES['vehicule']['name'] ;
@@ -72,4 +75,4 @@ function insert_img_sec() {
         }
     }
 
-}
+} */
