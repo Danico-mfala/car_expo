@@ -1,194 +1,133 @@
 <?php
-require ('../admin/function/_func_query.php') ;
-require ('../../app/database/cnx.php') ;
+// insertion du vehicule debut
+if( isset($_POST['sendNewCar']) ) {
+  if( !empty($_POST['km']) && !empty($_POST['prix']) && !empty($_POST['edition']) && !empty($_POST['etat']) && !empty($_POST['modele']) ) { // tous le champs rempli
+      if( !empty($_FILES['vehicule']['name']) && !empty($_FILES['avant']['name']) && !empty($_FILES['arriere']['name']) && !empty($_FILES['interieur']['name']) && !empty($_FILES['tableau']['name']) ) { /* toutes les image inserer */
+        // fonctions insertion du vehicules
+        // insertion vehicule
+          $sqlVehicule = "INSERT INTO vehicule (image, marque, modeleID) 
+                VALUES (:image, :marque, :modele)";
+          $reqVehicule = $cnx->prepare($sqlVehicule);
+          $reqVehicule->execute([
+            ":image" => $_FILES['vehicule']['name'],
+            ":marque" => $_POST['marque'],
+            ":modele" => $_POST['modele']
+          ]);
+          $marqueID = $cnx->lastInsertId(); // récupère l'ID du véhicule inséré
+        // insertion vehicule
+        // insertion detail
+          $sqlDetail = "INSERT INTO detail (edition, etatID, km, marqueID, prix)
+              VALUES (:edition, :etat, :km, :marqueID, :prix)";
+          $reqDetail = $cnx->prepare($sqlDetail);
+          $reqDetail->execute([
+            ":edition" => $_POST['edition'],
+            ":etat" => $_POST['etat'],
+            ":km" => $_POST['km'],
+            ":marqueID" => $marqueID,
+            ":prix" => $_POST['prix']
+          ]);
+        // insertion detail
+        // insertion image
+        $images = ['avant', 'arriere', 'interieur', 'tableau'];
+        foreach ($images as $img) {
+          if (isset($_FILES[$img]) && $_FILES[$img]['error'] === 0) {
+            $tmp = $_FILES[$img]['tmp_name'];
+            $dest = '../../public/image/db/car/' . basename($_FILES[$img]['name']);
+            if (move_uploaded_file($tmp, $dest)) {
+              $sqlImage = "INSERT INTO image (imageSec, marqueID)
+                          VALUES (:imageSec, :marqueID)";
+              $reqImage = $cnx->prepare($sqlImage);
+              $reqImage->execute([
+                ":imageSec" => $_FILES[$img]['name'],
+                ":marqueID" => $marqueID
+              ]);
+            }
+          }
+        }
 
-if ( isset($_POST['envlogo']) ){ // insertion logo debut
-
-  if( !empty($_POST['modele']) && !empty($_FILES['logo']['name']) ) {
-
-    insert_logo() ;
-
+        } else {
+        $message1 = '<p class="error">inserer toutes les images requis</p>' ;
+      }
   } else {
-
-    $message1 = '<p class="error">completer tous les champs</p>' ;
-
+    $message1 = '<p class="error">remplissez tous les champs</p>' ;
   }
-// insertion logo fin
-
-} elseif ( isset($_POST['envcar']) ){// insertion vehicule debut
-
-  if( !empty($_POST['marque']) && !empty($_FILES['vehicule']['name']) && !empty($_POST['modeleID']) ) {
-
-    insert_vehicule() ;
-
-  } else {
-
-    $message2 = '<p class="error">completer tous les champs</p>' ;
-
-  }
-// insertion vehicule fin
-
-} elseif ( isset($_POST['envimg']) ){ // insertion image secondaire debut
-
-if( !empty($_FILES['imageSec']['name']) && !empty($_POST['marqueID']) ) {
-
-    insert_img_sec() ;
-
-  } else {
-
-    $message3 = '<p class="error">completer tous les champs</p>' ;
-
-  }
-// insertion image secondaire fin
 }
+// insertion du vehicule fin
 ?>
 
-    <section>
-      <h1 class="h1">insere les donnees</h1>
-    
-    <!-- insertion des logo -->
-      <div>
-    
-  <?php if( isset($message1) ){ echo $message1 ; }else{ ?>
-  
-            <h2>insere un modele</h2>
-  
-  <?php } ?>
-  
-        <form action="" method="post" enctype="multipart/form-data">
-          <label for="logo">associer un logo &darr;&darr;&darr; </label>
-          <input type="file" name="logo" id="logo">
-          <input type="text" name="modele" placeholder="entre un modele...">
-          <input type="submit" name="envlogo" value="envoyer">
-        </form>
-      </div>
-    <!-- insertion des logo -->
-  
-    <!-- insertion vehicule -->
-      <div>
-      
-  <?php if( isset($message2) ){ echo $message2 ; }else{ ?>
-  
-            <h2>insere un vehicule</h2>
-  
-  <?php } ?>
-      
-        <form action="" method="post" enctype="multipart/form-data">
-          <input type="file" name="vehicule">
-          <input type="text" name="marque" placeholder="entre une marque...">
-          <label for="modele">associer a un modele &darr;&darr;&darr; </label>
-          <select name="modeleID" id="modele">
-            <option value="" disable selected>-- selectionne un modele --</option>
-  
-  <?php 
-  $sql = "SELECT modeleID, modele FROM logo" ;
-  $req = $cnx->prepare($sql) ;
-  $req->execute() ; 
-  while($data = $req->fetch(PDO::FETCH_OBJ)) {
-  ?>
-  
-            <option value="<?= $data->modeleID ; ?>"><?= $data->modele ; ?></option> 
-  
-  <?php } if( !isset($data) ) { ?>
-  
-            <option value="" disable selected>-- aucun modele --</option>
-  
-  <?php } ?>
-  
-          </select>
-          <input type="submit" name="envcar" value="envoyer">
-        </form>
-  
-      </div>
-    <!-- insertion vehicule -->
-    
-    <!-- insertion image secondaire -->
-      <div>
-        
-  <?php if( isset( $message3 ) ){ echo $message3 ; }else{ ?>
-  
-            <h2>entre une image</h2>
-  
-  <?php } ?>
-  
-        <form action="" method="post" enctype="multipart/form-data">
-          <input type="file" name="imageSec">
-          <label for="marque">associer a une marque &darr;&darr;&darr; </label>
-          <select name="marqueID" id="marque">
-            <option value="" disable selected>-- selectionne un modele --</option>
-  <?php 
-  $sql = "SELECT marqueID, marque FROM vehicule" ;
-  $req = $cnx->prepare($sql) ;
-  $req->execute() ; 
-  while($data = $req->fetch(PDO::FETCH_OBJ)) { 
-  ?>
-  
-            <option value="<?= $data->marqueID ; ?>"><?= $data->marque ; ?></option>
-  
-  <?php }if( !isset($data) ) { ?>
-  
-            <option value="" disable selected>-- aucun marque --</option>
-  
-  <?php } ?>
-  
-          </select>
-          <input type="submit" name="envimg" value="envoyer">
-        </form>
-      </div>
-    <!-- insertion image secondaire -->
-    </section>
-
-
-<!-- <div class="admin-content">
+<div class="admin-content">
   <h2>remplir le formulaire pour ajouter un nouveau vehicule</h2>
   <form action="" method="post" enctype="multipart/form-data">
+    <?= isset($message1) ? $message1 : "" ; ?>
+    <!-- donnee de la table vehicule debut -->
+    <input type="text" name="marque" placeholder="marque du vehicule">
+    <!-- donnee de la table vehicule suite -->
+    <!-- donnee de la table details debut -->
     <input type="number" name="km" placeholder="kilometrage">
     <input type="number" name="prix" placeholder="prix">
-    <input type="number" name="annee" placeholder="edition">
+    <input type="number" name="edition" placeholder="edition">
     <div>
-      <select name="etat" id="">
-        <option value="0">etat vehicule</option>
+      <select name="etat">
+        <option value="" disable selected>etat vehicule</option>
         <option value="1">nouveau</option>
         <option value="2">occasion</option>
       </select>
-      <select name="modele" id="">
-        <option value="0">modele</option>
+      <!-- donnee de la table details fin-->
+      <!-- donnee de la table logo debut -->
+      <select name="modele">
+        <option value="" disable selected>modele</option>
         <option value="">bmw</option>
-        <option value="">mazda</option>
-      </select>
-    </div>
 
+<?php
+$sql = "SELECT modeleID, modele FROM modele" ;
+$req = $cnx->prepare($sql) ;
+$req->execute() ;
+while($data = $req->fetch(PDO::FETCH_OBJ)) {
+?>
+        <option value="<?= $data->modeleID ; ?>"><?= $data->modele ; ?></option>
+
+<?php } if( !isset($data) ) { ?>
+
+        <option value="" disable selected>-- aucun modele --</option>
+
+<?php } ?>
+
+      </select>
+      <!-- donnee de la table logo fin -->
+    </div>
+      <!-- donnee de la table vehicule suite -->
+    <div class="custom-file-upload">
+      <i class="fa-solid fa-circle-plus"></i>
+      <input type="file" name="vehicule" id="image" class="file-upload">
+      <label for="image">vehicule</label>
+    </div>
+      <!-- donnee de la table vehicule fin -->
+      <!-- donnee de la table image debut -->
+    <div>
       <div class="custom-file-upload">
         <i class="fa-solid fa-circle-plus"></i>
-        <input type="file" name="image" id="image" class="file-upload">
-        <label for="image">vehicule</label>
-      </div>
-      <div class="custom-file-upload">
-        <i class="fa-solid fa-circle-plus"></i>
-        <input type="file" name="image" id="image" class="file-upload">
+        <input type="file" name="arriere" id="image" class="file-upload">
         <label for="image">arriere</label>
       </div>
       <div class="custom-file-upload">
         <i class="fa-solid fa-circle-plus"></i>
-        <input type="file" name="image" id="image" class="file-upload">
+        <input type="file" name="avant" id="image" class="file-upload">
         <label for="image">avant</label>
       </div>
       <div class="custom-file-upload">
         <i class="fa-solid fa-circle-plus"></i>
-        <input type="file" name="image" id="image" class="file-upload">
+        <input type="file" name="interieur" id="image" class="file-upload">
         <label for="image">interieur</label>
       </div>
       <div class="custom-file-upload">
         <i class="fa-solid fa-circle-plus"></i>
-        <input type="file" name="image" id="image" class="file-upload">
+        <input type="file" name="tableau" id="image" class="file-upload">
         <label for="image">tableau de bord</label>
       </div>
+    </div>
+      <!-- donnee de la table image fin -->
 
-      <input type="submit" name="envimg" value="valider">
+    <input type="submit" name="sendNewCar" value="valider">
+
   </form>
-</div> -->
-
-
-  <script src="https://kit.fontawesome.com/a6b68e8c8c.js" crossorigin="anonymous"></script>
-
-  
+</div>
