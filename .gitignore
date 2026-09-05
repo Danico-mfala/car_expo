@@ -2,3 +2,5 @@ public/image/
 .vscode/
 .dockerignore
 db/
+.xml
+exemple.php
