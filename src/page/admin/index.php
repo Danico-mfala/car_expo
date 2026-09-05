@@ -1,35 +1,28 @@
-<!-- page admin pour l'insertion des donnees test dans la base de donnee -->
-<?php 
+<?php
 session_start() ;
-if( isset($_SESSION['admin']) && isset($_SESSION['pass']) ){
-  $admin_name = $_SESSION['admin'] ;
-  } else { 
-    header('location:../index.php') ;
-  }
-  require '../../app/database/cnx.php' ;
-  // require '../../app/autoloader/autoload.php' ;
-  require './function/_func_display.php' ;
+if( !isset($_SESSION['admin']) ){
+  header('location:../index.php') ;
+  exit() ;
+} else {
+  require ('./function/_func_display.php') ;
+
+  $admin_name = isset($_SESSION['admin']) ? $_SESSION['admin'] : "" ;
+  $query_get = $_GET['page'] ;
 ?>
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>admin</title>
+  <title>admin <?= $admin_name ; ?></title>
   <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
-  
-  <?php include('_nav.php') ; ?>
-
+  <?php require('_nav.php') ; ?>
   <article>
-    <?php 
-    $query_get = $_GET['page'] ;
-    switchPage($query_get) ;
-    ?>
+    <?php switchPage($query_get) ;?>
   </article>
-  
   <script src="https://kit.fontawesome.com/a6b68e8c8c.js" crossorigin="anonymous"></script>
   <script src="../../public/js/admin-script.js"></script>
 </body>
 </html>
+<?php } ?>

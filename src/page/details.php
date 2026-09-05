@@ -19,7 +19,7 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATO
 
       $marqueID = $_GET['marqueID'] ;
 
-      $sql_details = "SELECT dt.km, dt.prix, dt.date, dt.marqueID, et.etat
+      $sql_details = "SELECT dt.km, dt.prix, dt.edition, dt.marqueID, et.etat
               FROM detail AS dt
               JOIN etat AS et ON dt.etatID = et.etatID
               WHERE dt.marqueID = :marqueID" ;
@@ -69,7 +69,7 @@ endforeach ;
       <div class="detail_desc">
         <p><i class="fa-solid fa-gauge-simple-high"></i><?= $details['km'] ; ?>kilometre</p>
         <p><i class="fa-solid fa-hand-holding-dollar"></i><?= $details['prix'] ; ?>$</p>
-        <p><i class="fa-solid fa-calendar-days"></i><?= $details['date'] ; ?></p>
+        <p><i class="fa-solid fa-calendar-days"></i><?= $details['edition'] ; ?></p>
         <p><i class="fa-solid fa-gear"></i><?= $details['etat'] ; ?></p>
         <button id="buy_sub">acheter</button>
       </div>

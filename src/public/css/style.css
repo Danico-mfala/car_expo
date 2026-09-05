@@ -287,9 +287,6 @@ header .home_image .home_description {
   box-shadow: 0px 1px 7px 0px #ccc;
   padding: 20px;
 }
-.admin-content h2 {
-  text-align: center;
-}
 .admin-content form div select {
   width: 48%;
   margin: 0;
@@ -415,6 +412,7 @@ article section h2 {
   border-bottom: 1px dashed #333;
   margin: 0;
   padding: 0 0 10px 0;
+  text-align: center;
 }
 /* article section div {
   width: 420px;
@@ -444,6 +442,10 @@ article section form label {
 }
 article section form input[type="submit"]:hover {
   background: #ff4c4c;
+}
+
+.nav_all {
+  background: #f1f1f1;
 }
 /***************** admin interface  ****************/
 /***************** admin  ****************/

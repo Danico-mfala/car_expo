@@ -5,6 +5,10 @@
       <h3>carexpo</h3>
     </div>
     <li>
+      <i class="fa-solid fa-house-user"></i>
+      <a href="../../">home</a>
+    </li>
+    <li>
         <i class="fa-solid fa-square-plus"></i>
         <a href="/page/admin?page=add">ajouter</a>
     </li>

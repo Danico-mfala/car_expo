@@ -68,7 +68,7 @@ require_once 'app/autoloader/autoload.php' ;
     </a>
     <?php
 // requete pour l'afficher des logos de marques dispo
-    $sql = "SELECT modeleID, modele, logo FROM logo" ;
+    $sql = "SELECT modeleID, modele, logo FROM modele" ;
     $req = $cnx->prepare($sql) ;
     $req->execute() ;
 

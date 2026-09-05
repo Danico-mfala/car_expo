@@ -1,6 +1,11 @@
 <?php
-session_start() ;
+if(isset($_COOKIE['memoire'])) { // verification cookie debut
+  header('location:/page/admin') ;
+  exit() ;
 
+} else { // verification cookie suite
+
+session_start() ;
 require('../app/database/cnx.php') ;
 $message= "<p>identifier vous</p>" ;
 ?>
@@ -13,9 +18,9 @@ $message= "<p>identifier vous</p>" ;
   <link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body>
-<?php 
+<?php
 if(isset($_POST['connexion'])) {
-  
+
   if(empty($_POST['pseudo']) || empty($_POST['pass'])) {
 
     $message = '<p class="error">vieller remplis tous le champs</p>' ;
@@ -36,17 +41,17 @@ if(isset($_POST['connexion'])) {
     if( $count > 0) {
 
       $data = $req->fetch(PDO::FETCH_OBJ) ;
-      
+
           if(isset($_POST['memoire'])){
               setcookie('memoire', $data->pseudo, time() + 3600 * 24 * 365, '/') ;
-            }else{
+              }else{
                 setcookie('memoire', $data->pseudo, time() - 1, '/') ;
-            }
-              $_SESSION['admin'] =  $_POST['pseudo'] ;
-              $_SESSION['pass'] =  $_POST['pass'] ;
+                }
+                $_SESSION['admin'] =  $_POST['pseudo'] ;
+              // $_SESSION['pass'] =  $_POST['pass'] ;
               header('location:/page/admin') ;
               exit ;
-    
+
     }else{
       $message = '<p class="error">vieller remplir les identifiant correct</p>' ;
     }
@@ -70,3 +75,6 @@ if(isset($_POST['connexion'])) {
     </div>
 </body>
 </html>
+<?php 
+} // verification cookie fin
+?>
