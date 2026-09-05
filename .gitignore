@@ -4,4 +4,4 @@ public/image/
 db/
 *.xml
 src/page/admin/template/exemple.php 
-src/page/admin/function/_func_query.php 
+src/page/admin/function/_func_query.php
