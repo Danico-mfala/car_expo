@@ -1,6 +1,6 @@
 <?php
-function switchPage ($quey_get) {
-  switch($quey_get) {
+function switchPage($_get) {
+  switch($_get) {
     case 'add' :
       require ('./template/_add_car.php') ;
       break ;
