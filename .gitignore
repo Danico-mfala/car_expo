@@ -2,6 +2,6 @@ public/image/
 .vscode/
 .dockerignore
 db/
-.xml
-exemple.php
-_func_query.php
+*.xml
+src/page/admin/template/exemple.php 
+src/page/admin/function/_func_query.php 
