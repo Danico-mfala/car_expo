@@ -67,6 +67,26 @@ document.addEventListener("DOMContentLoaded", () => {
     trash.forEach((tr) => {
       tr.addEventListener("click", () => {
         overlay.classList.add("active");
+        const idItem = tr.id;
+        const confirmDeleteItem = async (id) => {
+          const res = await fetch(
+            `../../page/admin/function/_delete.php?id=${id}`,
+            {
+              method: "GET",
+            },
+          );
+          const output = await res.json();
+          if (output.success) {
+            console.log(output.message);
+            document.getElementById(idItem).remove();
+          } else {
+            console.log(output.message);
+          }
+        };
+        btnConfirm.addEventListener("click", () => {
+          confirmDeleteItem(idItem);
+          overlay.classList.remove("active");
+        });
       });
     });
     btnCancel.addEventListener("click", () => {

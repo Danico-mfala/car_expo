@@ -39,7 +39,7 @@ require_once 'app/autoloader/autoload.php' ;
     <!-- home -->
     <div class="home">
       <div class="home_image"
-        style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , center / cover no-repeat url('public/image/home/LC.jpg') ;">
+        style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , center / cover no-repeat url('public/image/home/shutts.jpg') ;">
 
         <div class="home_description">
           <div>

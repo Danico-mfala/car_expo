@@ -38,7 +38,7 @@ $vehicules = $req->fetchAll() ;
 <?php
 foreach($vehicules as $vehicule) {
 ?>
-      <div class="card-cat">
+      <div class="card-cat" id="<?= $vehicule['marqueID'] ?>">
         <img src="../../public/image/db/car/<?= $vehicule['image'] ?>" alt="<?= $vehicule['marque'] ?>">
         <p><?= $vehicule['marque'] ?><p/>
         <p><?= $vehicule['km'] ?></p>
@@ -49,7 +49,7 @@ foreach($vehicules as $vehicule) {
           <button class="editSVG">
             <i class="fa-regular fa-pen-to-square"></i>
           </button>
-          <button class="trashSVG" onclick="deleteItem(<?= $vehicule['modeleID'] ; ?>)">
+          <button class="trashSVG" id="<?= $vehicule['marqueID'] ?>">
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
@@ -62,7 +62,7 @@ foreach($vehicules as $vehicule) {
         <span>Voulez-vous supprimer cet élément ?</span>
         <div class="buttons">
           <button class="btn btn-cancel">Non</button>
-          <button class="btn btn-confirm" onclick="comfirmDelete()">Oui</button>
+          <button class="btn btn-confirm">Oui</button>
         </div>
       </div>
     </div>
