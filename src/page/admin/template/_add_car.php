@@ -128,7 +128,6 @@ if( isset($_POST['sendNewModele']) ) {
       <!-- donnee de la table logo debut -->
       <select name="modele">
         <option value="" disable selected>modele</option>
-        <option value="">bmw</option>
 
 <?php
 $sql = "SELECT modeleID, modele FROM modele" ;

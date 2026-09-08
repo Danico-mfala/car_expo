@@ -4,12 +4,6 @@ function switchPage($_get) {
     case 'add' :
       require ('./template/_add_car.php') ;
       break ;
-    case 'delete' :
-      require ('./template/_delete_car.php') ;
-      break ;
-    case 'edit' :
-      require ('./template/_edit_car.php') ;
-      break ;
     case 'all' :
       require ('./template/_all_car.php') ;
       break ;

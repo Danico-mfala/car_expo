@@ -22,6 +22,7 @@ if( !isset($_SESSION['admin']) ){
     <?php switchPage($query_get) ;?>
   </article>
   <script src="https://kit.fontawesome.com/a6b68e8c8c.js" crossorigin="anonymous"></script>
+  <script src="../../public/js/admin-delete-item.js"></script>
   <script src="../../public/js/admin-script.js"></script>
 </body>
 </html>
