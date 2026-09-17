@@ -5,3 +5,4 @@ db/
 *.xml
 src/page/admin/template/exemple.php 
 src/page/admin/function/_func_query.php
+src/public/css/CS.css
