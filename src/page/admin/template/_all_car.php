@@ -1,5 +1,5 @@
 <?php 
-// require ('../../app/database/cnx.php') ;
+require ('../../app/database/cnx.php') ;
 ?>
 <section>
   <!-- bar de recherche et filtrage -->
@@ -39,19 +39,20 @@ $vehicules = $req->fetchAll() ;
 <?php
 foreach($vehicules as $vehicule) {
 ?>
+
     <!-- card du vehicule -->
       <div class="card-cat" id="<?= $vehicule['marqueID'] ?>">
-        <img src="../../public/image/db/car/<?= $vehicule['image'] ?>" alt="<?= $vehicule['marque'] ?>">
+        <img src="../../../public/image/db/car/<?= $vehicule['image'] ?>" alt="<?= $vehicule['marque'] ?>">
         <p><?= $vehicule['marque'] ?><p/>
         <p><?= $vehicule['km'] ?></p>
         <p><?= $vehicule['prix'] ?></p>
         <p><?= $vehicule['date'] ?></p>
         <p><?= $vehicule['etatID'] === 1 ? "nouveau" : "occasion" ; ?></p>
         <div>
-          <button class="editSVG" id="<?= $vehicule['marqueID'] ?>">
+          <button class="editSVG" data-vehicule-id="<?= $vehicule['marqueID'] ?>">
             <i class="fa-regular fa-pen-to-square"></i>
           </button>
-          <button class="trashSVG" id="<?= $vehicule['marqueID'] ?>">
+          <button class="trashSVG" data-vehicule-id="<?= $vehicule['marqueID'] ?>" data-vehicule-img="<?= $vehicule['image'] ?>">
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
@@ -72,22 +73,23 @@ foreach($vehicules as $vehicule) {
     </div>
     <!-- garde fou pour la suppression -->
     <!-- formulaire de modification -->
-    <form style="display: none;" class="form-update">
+    <form style="display: none;" id="form-update">
     <?= isset($message1) ? $message1 : "" ; ?>
 
     <!-- donnee de la table details debut -->
-      <input type="number" name="km" placeholder="kilometrage">
-      <input type="number" name="prix" placeholder="prix">
-      <input type="number" name="edition" placeholder="edition">
+    <input type="text" name="marqueVh" placeholder="marque">
+      <input type="number" name="kmVh" placeholder="kilometrage">
+      <input type="number" name="prixVh" placeholder="prix">
+      <input type="number" name="editionVh" placeholder="edition">
       <div>
-        <select name="etat">
+        <select name="etatVh">
           <option value="" disable selected>etat vehicule</option>
           <option value="1">nouveau</option>
           <option value="2">occasion</option>
         </select>
         <!-- donnee de la table details fin-->
         <!-- donnee de la table logo debut -->
-        <select name="modele">
+        <select name="modeleVh">
           <option value="" disable selected>modele</option>
 
 <?php
@@ -107,7 +109,7 @@ while($data = $req->fetch(PDO::FETCH_OBJ)) {
         </select>
       <!-- donnee de la table logo fin -->
       </div>
-
+      <input type="button" name="annulerModifier" value="annuler">
       <input type="button" name="modifier" value="modifier">
 
   </form>

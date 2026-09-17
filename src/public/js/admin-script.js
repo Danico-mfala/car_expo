@@ -61,38 +61,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const trash = document.querySelectorAll(".trashSVG"); // icon supprimer
     const edit = document.querySelectorAll(".editSVG"); // icon modification
     // donnees du formulaire de modification -- debut
-    const form_update = document.querySelector("form-update"); // formulaire de modification
+    const form_update = document.getElementById("form-update"); // formulaire de modification
     const marqueVh = document.querySelector('input[name="marqueVh"]'); // input marque du vehicule
     const kmVh = document.querySelector('input[name="kmVh"]'); // input kilometrage du vehicule
     const editionVh = document.querySelector('input[name="editionVh"]'); // input edition du vehicule
     const etatVh = document.querySelector('select[name="etatVh"]'); // input etat du vehicule
     const modeleVh = document.querySelector('select[name="modeleVh"]'); // input modele du vehicule
-    const prixVh = document.querySelector('input[name="prix"]'); // input prix du vehicule
+    const prixVh = document.querySelector('input[name="prixVh"]'); // input prix du vehicule
     const modifierBtn = document.querySelector('input[name="modifier"]');
+    const modifierCancel = document.querySelector(
+      'input[name="annulerModifier"]',
+    );
     // donnees du formulaire de modification -- fin
 
     // evenement lors de l'action sur le bouton de suppression -- debut
     trash.forEach((tr) => {
       tr.addEventListener("click", () => {
         overlay.classList.add("active");
-        const idItem = tr.id;
-        const confirmDeleteItem = async (id) => {
-          const res = await fetch(
-            `../../page/admin/function/_delete.php?id=${id}`,
-            {
-              method: "GET",
-            },
-          );
+        const idVehicule = tr.dataset.vehiculeId;
+        const imageVehicule = tr.dataset.vehiculeImg;
+        const confirmDeleteItem = async () => {
+          const res = await fetch("../../page/admin/function/_delete.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: idVehicule,
+              img: imageVehicule,
+            }),
+          });
           const output = await res.json();
           if (output.success) {
             console.log(output.message);
-            document.getElementById(idItem).remove();
+            document.getElementById(idVehicule).remove();
           } else {
             console.log(output.message);
           }
         };
         btnConfirm.addEventListener("click", () => {
-          confirmDeleteItem(idItem);
+          confirmDeleteItem();
+          overlay.classList.remove("active");
+        });
+        btnCancel.addEventListener("click", function () {
           overlay.classList.remove("active");
         });
       });
@@ -103,33 +112,33 @@ document.addEventListener("DOMContentLoaded", () => {
     edit.forEach((ed) => {
       ed.addEventListener("click", () => {
         form_update.style.display = "block";
-        const id = ed.id;
-        const marque = marqueVh.value; // marque
-        const km = kmVh.value; // kilometrage
-        const edition = editionVh.value; // edition
-        const prix = prixVh.value; // prix
-        const etat = etatVh.value; // etat
-        const modele = modeleVh.value; // modele
+        const idVehicule = ed.dataset.vehiculeId ?? "";
         modifierCancel.addEventListener("click", () => {
           form_update.style.display = "none";
         });
         modifierBtn.addEventListener("click", async () => {
-          const res = await fetch("`../../page/admin/function/_delete.php", {
+          const res = await fetch("../../page/admin/function/_update.php", {
             method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify({
-              id: id,
-              marque: marque,
-              km: km,
-              edition: edition,
-              etat: etat,
-              modele: modele,
-              prix: prix,
+              id: idVehicule,
+              marque: marqueVh.value,
+              km: kmVh.value,
+              edition: editionVh.value,
+              etat: etatVh.value,
+              modele: modeleVh.value,
+              prix: prixVh.value,
             }),
           });
 
           const output = await res.json();
           if (output.success) {
             console.log(output.message);
+            setTimeout(() => {
+              location.reload();
+            }, 800);
           } else {
             console.log(output.message);
           }

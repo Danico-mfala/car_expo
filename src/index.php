@@ -1,16 +1,8 @@
 <?php
 require 'app/database/cnx.php' ;
 require_once 'app/autoloader/autoload.php' ;
+loadFile('page','template','head');
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>page accuiel</title>
-  <link rel="stylesheet" href="public/css/style.css">
-</head>
 
 <body>
   <!-- header -->
@@ -18,37 +10,33 @@ require_once 'app/autoloader/autoload.php' ;
 
     <!-- nav bar -->
     <nav>
-      <div class="logo">
+      <div>
         <img src="public/image/home/logo.avif" alt="logo">
         <span>carexpo</span>
       </div>
-
       <ul>
         <li><a href="#"><i class="fas fa-home"></i>accueil</a></li>
         <li><a href="#"><i class="fa-solid fa-car"></i>catalogue</a></li>
         <li><a href="page/contact.php"><i class="fas fa-briefcase"></i>contact</a></li>
         <li><a href="#"><i class="fas fa-info-circle"></i>apropos</a></li>
       </ul>
-
-      <a href="./page/index.php" class="btn_admin">
+      <a href="./page/index.php" class="">
         <i class="fa-regular fa-circle-user"></i>
       </a>
     </nav>
     <!-- nav bar -->
 
     <!-- home -->
-    <div class="home">
-      <div class="home_image"
+    <div class="">
+      <div class=""
         style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , center / cover no-repeat url('public/image/home/shutts.jpg') ;">
-
-        <div class="home_description">
+        <div class="">
           <div>
             <h1>bienvenue</h1>
             <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, blanditiis!</h2>
             <button><a href="page/contact.php">contatez nous</a></button>
           </div>
         </div>
-
       </div>
     </div>
     <!-- home -->
@@ -60,7 +48,7 @@ require_once 'app/autoloader/autoload.php' ;
   <hr>
   <!-- separeteur -->
   <!-- section logo links -->
-  <div class="logo_links">
+  <div class="">
 
     <a href="index.php?hlogo=0#catalogue">
       <i class=""></i>

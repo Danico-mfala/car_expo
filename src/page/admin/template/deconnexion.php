@@ -10,6 +10,8 @@ session_start() ; // initialisation de la session
 <?php
 if (isset($_POST['deconnexion'])) {
   session_destroy() ; // destruiction de la session 
-  header('location:../../../index.php') ;
+  // header('location:../../index.php') ;
+  setcookie('memoire', $data->pseudo, time() - 1, '/') ;
+  header('location:../../../page/index.php') ;
 }
 ?>

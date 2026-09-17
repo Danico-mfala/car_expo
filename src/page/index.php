@@ -1,6 +1,6 @@
 <?php
 if(isset($_COOKIE['memoire'])) { // verification cookie debut
-  header('location:/page/admin') ;
+  header('location:./admin/index.php') ;
   exit() ;
 
 } else { // verification cookie suite
