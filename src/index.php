@@ -7,10 +7,9 @@ loadFile('page','template','head');
 <body>
   <!-- header -->
   <header>
-
     <!-- nav bar -->
     <nav>
-      <div>
+      <div class="nav_logo">
         <img src="public/image/home/logo.avif" alt="logo">
         <span>carexpo</span>
       </div>
@@ -25,35 +24,35 @@ loadFile('page','template','head');
       </a>
     </nav>
     <!-- nav bar -->
-
     <!-- home -->
-    <div class="">
-      <div class=""
-        style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , center / cover no-repeat url('public/image/home/shutts.jpg') ;">
-        <div class="">
+      <div class="home">
+        <div class="home_font"
+          style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , center / cover no-repeat url('public/image/home/shutts.jpg') ;">
           <div>
-            <h1>bienvenue</h1>
-            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, blanditiis!</h2>
-            <button><a href="page/contact.php">contatez nous</a></button>
+            <div class="home_center">
+              <h1>bienvenue</h1>
+              <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, blanditiis!</h2>
+              <button><a href="page/contact.php">contatez nous</a></button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- home -->
-
+      <!-- home -->
   </header>
   <!-- header -->
-
   <!-- separeteur -->
   <hr>
-  <!-- separeteur -->
-  <!-- section logo links -->
-  <div class="">
+  <!-- separeteur -->         
 
-    <a href="index.php?hlogo=0#catalogue">
-      <i class=""></i>
-      <p>tous</p>
-    </a>
+  <!-- section logo links -->
+  <div class="links_content">
+    <h2>retouvez une marque</h2>
+    <div>
+
+      <a href="index.php?hlogo=0#catalogue">
+        <i class=""></i>
+        <p class="">tous</p>
+      </a>
     <?php
 // requete pour l'afficher des logos de marques dispo
     $sql = "SELECT modeleID, modele, logo FROM modele" ;
@@ -63,17 +62,18 @@ loadFile('page','template','head');
     while($data = $req->fetch(PDO::FETCH_OBJ)) {
 ?>
 
-    <a href="index.php?hlogo=<?= $data->modeleID ?>#catalogue">
-      <img src="public/image/db/logo/<?= $data->logo ?>" alt="<?= $data->modele ?>">
-      <p>
-        <?= $data->modele ?>
-      </p>
-    </a>
+      <a href="index.php?hlogo=<?= $data->modeleID ?>#catalogue">
+        <img src="public/image/db/logo/<?= $data->logo ?>" alt="<?= $data->modele ?>">
+        <p>
+          <?= $data->modele ?>
+        </p>
+      </a>
+    
 
-    <?php
+<?php
     }
 ?>
-
+    </div>
   </div>
   <!-- section logo links -->
   <!-- separeteur -->
