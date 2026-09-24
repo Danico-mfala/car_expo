@@ -106,7 +106,11 @@ if( isset($_POST['sendNewModele']) ) {
 ?>
 
 <section>
-
+<pre>
+  <?php
+  print_r($destVehicule) ;
+  ?>
+</pre>
 <div class="admin-content">
   <h2>remplir le formulaire pour ajouter un nouveau vehicule</h2>
   <form action="" method="post" enctype="multipart/form-data">
@@ -115,9 +119,9 @@ if( isset($_POST['sendNewModele']) ) {
     <input type="text" name="marque" placeholder="marque du vehicule">
     <!-- donnee de la table vehicule suite -->
     <!-- donnee de la table details debut -->
-    <input type="number" name="km" placeholder="kilometrage">
-    <input type="number" name="prix" placeholder="prix">
-    <input type="number" name="edition" placeholder="edition">
+    <input type="number" name="km" placeholder="kilometrage" class="text-primary-emphasis">
+    <input type="number" name="prix" placeholder="prix" class="text-primary-emphasis">
+    <input type="number" name="edition" placeholder="edition" class="text-primary-emphasis">
     <div>
       <select name="etat">
         <option value="" disable selected>etat vehicule</option>

@@ -8,7 +8,7 @@ loadFile('page','template','head');
   <!-- header -->
   <header>
     <!-- nav bar -->
-    <nav>
+    <nav class="z-3">
       <div class="nav_logo">
         <img src="public/image/home/logo.avif" alt="logo">
         <span>carexpo</span>
@@ -46,14 +46,13 @@ loadFile('page','template','head');
 
   <!-- section logo links -->
   <div class="links_content">
-    <h2>retouvez une marque</h2>
+    <h2>marque disponibles</h2>
     <div>
-
       <a href="index.php?hlogo=0#catalogue">
-        <i class=""></i>
+        <i></i>
         <p class="">tous</p>
       </a>
-    <?php
+<?php
 // requete pour l'afficher des logos de marques dispo
     $sql = "SELECT modeleID, modele, logo FROM modele" ;
     $req = $cnx->prepare($sql) ;
@@ -61,15 +60,12 @@ loadFile('page','template','head');
 
     while($data = $req->fetch(PDO::FETCH_OBJ)) {
 ?>
-
       <a href="index.php?hlogo=<?= $data->modeleID ?>#catalogue">
         <img src="public/image/db/logo/<?= $data->logo ?>" alt="<?= $data->modele ?>">
         <p>
           <?= $data->modele ?>
         </p>
       </a>
-    
-
 <?php
     }
 ?>
@@ -79,81 +75,64 @@ loadFile('page','template','head');
   <!-- separeteur -->
   <hr>
   <!-- separeteur -->
-  <!-- section catalogue -->
-  <div>
-
-    <form class="match" id="macthForm" action="" method="get">
-      <label for="searchInput">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" name="search" placeholder="Recherche" id="searchInput"
-        value="<?= $_GET['search'] ?? '' ?>">
-      </label>
-      <select name="filter" id="filterSelect">
-        <option value="" disable selected>filtre</option>
+  <!-- section match car -->
+  <div class="match_car">
+    <!-- From Uiverse.io by LightAndy1 --> 
+    <div class="search">
+      <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+      <input
+        id="query"
+        class="input"
+        type="search"
+        placeholder="Search..."
+        name="searchbar"
+      />
+    </div>
+    <div class="filter">
+      <select name="" id="">
+        <option selected>etat du vehicule</option>
         <option value="1">nouveau</option>
         <option value="2">occasion</option>
       </select>
-    </form>
+    </div>
+  </div>
+  <!-- section match car -->
+  <!-- section catalogue -->
+  <div>
     <!-- separeteur -->
     <hr id="catalogue">
     <!-- separeteur -->
-    <div class="catalogue">
-      <?php
-// requete pour l'afficher de toutes les voiture dispo
-    $hlogo = intval($_GET['hlogo'] ?? 0) ;
-    $filter = intval($_GET['filter'] ?? 0) ;
-    $search = trim($_GET['search'] ?? '') ;
-
-    $sql = "SELECT DISTINCT vh.marqueID, vh.image, vh.marque, 
-            vh.modeleID, dt.etatID, dt.marqueID FROM vehicule AS vh
-            JOIN detail AS dt ON vh.marqueID = dt.marqueID WHERE 1=1" ;
-    $params = array() ;
-
-    if($hlogo > 0) {
-      $sql .= " AND vh.modeleID = :hlogo" ;
-      $params[':hlogo'] = $hlogo ;
-    }
-
-    if($filter > 0) {
-      $sql .= " AND dt.etatID = :filter" ;
-      $params[':filter'] = $filter ;
-    }
-
-    if(!empty($search)) {
-      $sql .= " AND LOWER(vh.marque) LIKE :search" ;
-      $params[":search"] = "%".strtolower($search)."%" ;
-    }
-    $req = $cnx->prepare($sql) ;
-    $req->execute($params) ;
-    $count = $req->rowCount() ;
-
-    if($count > 0) {
-      while($data = $req->fetch(PDO::FETCH_OBJ)) {
+<?php
+      $sql = "SELECT * FROM vehicule" ;
+      $req = $cnx->prepare($sql) ;
+      // $req->execute($params) ;
+      $req->execute() ;
+      $count = $req->rowCount() ;
+      
+  if($count > 0) {
+  while($data = $req->fetch(PDO::FETCH_OBJ)) {
 ?>
-
-      <div class="card-cat">
-        <img src="public/image/db/car/<?= $data->image ?>" alt="<?= $data->marque ?>">
-        <p>
-          <?= $data->marque ?>
-        </p>
-        <div>
-          <a href="page/details.php?marqueID=<?= $data->marqueID ?>">details</a>
+    <div class="px-4 d-flex flex-wrap gap-4 justify-content-center">
+      <div class="card row mx-2" style="width: 18rem">
+        <img src="public/image/db/car/<?= $data->image ?>" alt="<?= $data->marque ?>" class="card-img-top">
+        <div class="px-4 py-2">
+          <h3 class="card-title">
+            <?= $data->marque ?>
+          </h3>
+          <p class="card-text text-primary-emphasis">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <a href="page/details.php?marqueID=<?= $data->marqueID ?>" class="btn btn-primary pointer">details</a>
         </div>
       </div>
-
-      <?php
+<?php
     }
   }else { 
 ?>
-
       <div class="catalogue-nothing">
         <p>aucun vehicule disponible</p>
       </div>
-
-      <?php
+<?php
 }
 ?>
-
     </div>
   </div>
   <!-- section catalogue -->
@@ -161,9 +140,9 @@ loadFile('page','template','head');
   <hr>
   <!-- separeteur -->
   <!-- section footer -->
-  <?php
+<?php
   loadFile('page','template','footer');
-  ?>
+?>
   <!-- section footer -->
 
   <script src="public/js/script.js"></script>

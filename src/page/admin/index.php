@@ -7,14 +7,9 @@ if( !isset($_SESSION['admin']) ){
 
     $admin_name = isset($_SESSION['admin']) ? $_SESSION['admin'] : "" ;
     $query_get = $_GET['page'] ;
+    require_once('../../app/autoloader/autoload.php') ;
+    loadFile('page','template','head');
 ?>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>admin</title>
-  <link rel="stylesheet" href="../../public/css/style.css">
-</head>
 <body>
   <?php require('_nav.php') ; ?>
   <article>

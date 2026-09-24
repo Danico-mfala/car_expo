@@ -7,16 +7,11 @@ if(isset($_COOKIE['memoire'])) { // verification cookie debut
 
 session_start() ;
 require('../app/database/cnx.php') ;
+require_once '../app/autoloader/autoload.php' ;
 $message= "<p>identifier vous</p>" ;
+loadFile('page','template','head');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>connexion</title>
-  <link rel="stylesheet" href="../public/css/style.css">
-</head>
+
 <body>
 <?php
 if(isset($_POST['connexion'])) {
