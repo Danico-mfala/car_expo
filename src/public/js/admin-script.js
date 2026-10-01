@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let cardCat = document.querySelectorAll(".card-cat");
 
   if (urlOrgin === "http://localhost:9000" && urlSearch === "?page=all") {
-    const searchInput = document.querySelector(".nav_all > input");
-    const searchSelect = document.querySelector(".nav_all > select");
+    const searchInput = document.querySelector(".match_car .search > input");
+    const searchSelect = document.querySelector(".match_car .filter > select");
     // filtrage selon la marque
     searchSelect.addEventListener("change", function () {
       const filter = searchSelect.value.toLowerCase().trim();

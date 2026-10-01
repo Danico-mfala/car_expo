@@ -311,3 +311,211 @@ header .home .home_font .home_center h2 {
   align-items: center;
   gap: 15px;
 }
+/***************** element catalogue ****************/
+/***************** element footer ****************/
+.footer {
+  background-color: var(--color-rgba);
+  padding: 50px 80px;
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: left;
+}
+.logo-footer img {
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+}
+.footer-column a {
+  display: block;
+  margin-bottom: 6px;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+}
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color-background);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  margin: 0 5px;
+}
+.social-icons a:hover {
+  background: var(--color-secondary);
+}
+.footer-bottom p {
+  color: var(--color-muted);
+}
+/***************** element footer ****************/
+
+/*------------------  OTHER PAGES ----------------------*/
+
+/***************** element contact ****************/
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+  width: 75%;
+}
+.contact div {
+  flex: 1;
+}
+.contact form {
+  flex: 1;
+}
+/***************** element contact ****************/
+
+/***************** admin interface  ****************/
+._nav {
+  position: fixed;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  width: 65px;
+  z-index: 100;
+  overflow: hidden;
+  transition: 0.3s;
+}
+._nav:hover {
+  width: 250px;
+}
+._nav ul {
+  padding: 0;
+  margin: 0;
+  width: 250px;
+  list-style: none;
+}
+._nav .logo {
+  display: flex;
+  padding: 10px 6px;
+  align-items: center;
+}
+._nav .logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+}
+._nav h3 {
+  margin-left: 10px;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #7f8996;
+}
+._nav ul li {
+  padding: 10px;
+}
+._nav ul svg {
+  font-size: 40px;
+}
+._nav ul a {
+  margin-left: 20px;
+}
+article {
+  width: 100%;
+  min-height: 100%;
+}
+article section {
+  width: 80%;
+  margin: 20px auto;
+}
+.h1 {
+  text-align: center;
+  font-size: 32px;
+}
+article section h2 {
+  border-bottom: 1px dashed #333;
+  margin: 0;
+  padding: 0 0 10px 0;
+  text-align: center;
+}
+/* article section div {
+  width: 420px;
+  margin: 10px auto;
+} */
+article section form {
+  box-shadow: 0px 1px 7px 0px #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(12, 15, 41, 0.193);
+}
+article section form input[type="file"],
+article section form input[type="text"],
+article section form input[type="submit"],
+article section form select {
+  margin: 10px 0;
+}
+article section form input[type="submit"] {
+  background: #ff6b6b;
+  transition: 0.2s;
+  color: #fff;
+  text-transform: capitalize;
+}
+article section form label {
+  color: #fff;
+  font-weight: 600;
+}
+article section form input[type="submit"]:hover {
+  background: #ff4c4c;
+}
+
+.nav_all {
+  background: #f1f1f1;
+}
+/* Overlay (fond noir transparent + blur) */
+.overlay {
+  position: fixed;
+  inset: 0; /* top:0, right:0, bottom:0, left:0 */
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.overlay.active {
+  display: flex;
+}
+/* Boîte d'alerte */
+.alert-box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Boutons */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+.btn-cancel {
+  background: #e0e0e0;
+}
+.btn-confirm {
+  background: #333;
+  color: #fff;
+}
+/***************** admin interface  ****************/
+/*------------------  OTHER PAGES ----------------------*/

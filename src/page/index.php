@@ -53,7 +53,7 @@ if(isset($_POST['connexion'])) {
   }
 }
 ?>
-    <div class="admin-form">
+    <div class="form">
       <form action="" method="post">
         <?= $message ; ?>
         <label for="pseudo">pseudo</label>

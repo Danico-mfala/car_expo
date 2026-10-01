@@ -1,5 +1,6 @@
 <?php
 require_once '../app/autoloader/autoload.php' ;
+loadFile('page','template','head');
 ?>
 <!DOCTYPE html>
 <html lang="fr">

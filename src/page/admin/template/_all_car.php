@@ -3,26 +3,31 @@ require ('../../app/database/cnx.php') ;
 ?>
 <section>
   <!-- bar de recherche et filtrage -->
-  <div class="nav_all">
-    <input type="text" placeholder="touver un vehicule" value="" >
+  <div class="match_car">
+    <div class="search">
+      <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+      <input type="text" placeholder="touver un vehicule" value="" >
+    </div>
+    <div class="filter">
       <select>
         <option value="" disable selected>modele</option>
-
-<?php
+        
+        <?php
 $sql = "SELECT modele FROM modele" ;
 $req = $cnx->prepare($sql) ;
 $req->execute() ;
 while($data = $req->fetch(PDO::FETCH_OBJ)) {
-?>
+  ?>
         <option value="<?= $data->modele ; ?>"><?= $data->modele ; ?></option>
-
-<?php } if( !isset($data) ) { ?>
-
+        
+        <?php } if( !isset($data) ) { ?>
+        
         <option value="" disable selected>-- aucun modele --</option>
-
-<?php } ?>
-
+        
+        <?php } ?>
+        
       </select>
+    </div>
   </div>  
   <!-- bar de recherche et filtrage -->
 
